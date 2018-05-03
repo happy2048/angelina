@@ -156,18 +156,18 @@ refer域的说明：
 	（2）这个域所涉及的文件都是只读属性，也就是说你不可以在运行job当中去修改这些文件。
 	（3）这个域中的文件路径是一个相对路径，主要是相对于之前我们配置的refer-volume，也就是说，假如我的refer-volume下面放了如下目录：
 	
-	[root@683ea81c73f6 refer]# ll
-	total 17045972
-	drwxr-xr-x 3 root root        4096 May  5  2017 annovar_db
-	drwxr-xr-x 3 root root        4096 May  5  2017 reffa
-	drwxr-xr-x 3 root root        4096 May  5  2017 refvcf
-	-rw-r--r-- 1 root root 17455058559 Apr 25 02:39 test.tar.gz
-	drwxr-xr-x 2 root root        4096 Apr  7 11:19 yang
+		[root@683ea81c73f6 refer]# ll
+		total 17045972
+		drwxr-xr-x 3 root root        4096 May  5  2017 annovar_db
+		drwxr-xr-x 3 root root        4096 May  5  2017 reffa
+		drwxr-xr-x 3 root root        4096 May  5  2017 refvcf
+		-rw-r--r-- 1 root root 17455058559 Apr 25 02:39 test.tar.gz
+		drwxr-xr-x 2 root root        4096 Apr  7 11:19 yang
 	
-	如果我需要reffa/b37/hg19.fasta那么我只需要写reffa/b37/hg19.fasta就行，切记路径要写对，否则运行任务失败。
-	（4） 如果要在后续的step当中引用该域的一些文件，比如我需要hg19.fasta文件，只需要在step当中写成 “refer@fasta”
+	     如果我需要reffa/b37/hg19.fasta那么我只需要写reffa/b37/hg19.fasta就行，切记路径要写对，否则运行任务失败。
+	（4）如果要在后续的step当中引用该域的一些文件，比如我需要hg19.fasta文件，只需要在step当中写成 “refer@fasta”
 		就行。
-	（5） 如果该域没有内容，那么写成如下格式：
+	（5）如果该域没有内容，那么写成如下格式：
 		
 		"refer": {}
 		
