@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bio-redis
+  namespace: bio-system
+spec:
+  ports:
+  - port: 6380
+    targetPort: 6379
+  selector:
+    app: bio-redis
+  type: LoadBalancer
+  externalIPs: 
+  - 10.61.0.86

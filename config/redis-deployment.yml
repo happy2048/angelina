@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: bio-redis
+  namespace: bio-system
+  labels:
+    app: bio-redis
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+       app: bio-redis
+  template:
+    metadata:
+      labels:
+        app: bio-redis
+    spec:
+      containers:
+      - name: bio-redis
+        image: redis:3.0
+        command:
+          - redis-server
+          - "--appendonly"
+          - "yes"
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - name: data
+          mountPath: /data 
+      volumes:
+      - name: data
+        glusterfs:
+          endpoints: glusterfs-cluster
+          path: redis-volume
+          readOnly: false   
