@@ -70,20 +70,20 @@ angelina主要就是解决上面的任务执行顺序。
 	  -t, --template= Pipeline template name,the sample will be running by the pipeline template.
 	  // 指定template，angelina会按照这个template预先定义好的流程运行job.
 	  -T, --tmp=      A temporary pipeline template file,defines the running steps,the sample will be
-					  running by it,can't be used with -t.
+			  running by it,can't be used with -t.
       //指定一个临时template，不能和-t一起使用
 	  -e, --env=      Pass variable to the pipeline template such as TEST="test",this option can be
-					  used many time,eg: -e TEST="test1" -e NAME="test".
+			  used many time,eg: -e TEST="test1" -e NAME="test".
 	  // 指定该选项以后，该选项给定的环境变量会被应用到template中params域，覆盖其默认值。
 	  -c, --config=   configure file,which include the values of -f -n -i -o -t.
 	  // 指定配置文件，把-f -n -i -o -t的信息写入到配置文件中，然后不用重复指定这些选项的值。
 	  -r, --redis=    Redis server address,can't use localhost:6379 and 127.0.0.1:6379,because they can't
-					  be accessed by containers,give another address;if the -r option don't give,you must
-					  set the System Environment Variable REDISADDR.
+		          be accessed by containers,give another address;if the -r option don't give,you must
+			  set the System Environment Variable REDISADDR.
 	 // 指定angelina所需要的redis server。不能指定127.0.0.1或者localhost，因为容器无法访问，如果不带该选项，那么必须设置REDISADDR系统环境变量，否则angelina无法运行。
 	Other Options:
 	  -I, --init=     Angelina configure file,the content of the file will be stored in the redis,and
-					  use -g option will generate an angelina template configure file.
+			  use -g option will generate an angelina template configure file.
 	  // 初始化angelina使用，后面跟上初始化文件，文件模板由 -g  init 产生
 	  -s, --store=    Give a pipeline template file,and store it to redis.
 	  // 生成一个新的template,并且保存
@@ -94,10 +94,10 @@ angelina主要就是解决上面的任务执行顺序。
 	  -q, --query=    give the pipeline id or pipeline name to get it's content.
 	  // 查询template的详细信息
 	  -g, --generate= Three value("conf","pipe","init") can be given,"pipe" is to generate a pipeline
-					  template file and you can edit it and use -s to store the pipeline;"conf" is to
-					  generate running configure file and you can edit it and use -c option to run the
-					  sample;"init" is to generate angelina template configure file,then you can edit
-					  it and use -I to init the angelina system.
+			  template file and you can edit it and use -s to store the pipeline;"conf" is to
+			  generate running configure file and you can edit it and use -c option to run the
+			  sample;"init" is to generate angelina template configure file,then you can edit
+			  it and use -I to init the angelina system.
      // 产生相关的模板文件，-g init产生初始化模板文件，-g pipe产生template模板文件,-g conf产生运行job的配置文件（-c 选项使用）, -g pipe,init,conf三个都产生。 
 	Help Options:
 	  -h, --help      Show this help message
